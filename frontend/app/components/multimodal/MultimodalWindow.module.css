@@ -1,0 +1,116 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: var(--background);
+  padding: 2rem;
+}
+
+.videoWrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--comment);
+  border-radius: var(--round-border-radius);
+  margin-bottom: 2rem;
+}
+
+.video {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--round-border-radius);
+}
+
+.video.hidden {
+  display: none;
+}
+
+.controlsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mainControls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.recordButton {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--purple);
+  color: var(--background);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.recordButton.recording {
+  background-color: var(--red);
+  animation: pulse 1.5s infinite;
+}
+
+.mediaButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--comment);
+  color: var(--foreground);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mediaButton.active {
+  background-color: var(--purple);
+  color: var(--background);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.cancelButton {
+  padding: 0.5rem 1rem;
+  border-radius: var(--round-border-radius);
+  border: none;
+  cursor: pointer;
+  background-color: var(--comment);
+  color: var(--foreground);
+}
+
+.permissionError {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--red);
+  text-align: center;
+  font-size: 0.875rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+} 
