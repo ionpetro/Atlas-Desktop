@@ -21,15 +21,6 @@ export default function MessageInput() {
 
 	return (
 		<div className={styles.inputWrapper}>
-			<div className={styles.mediaButtons}>
-				<button
-					className={styles.mediaButton}
-					onClick={() => window.BloopAPI.openMicrophoneWindow()}
-				>
-					🎤
-				</button>
-				<button className={styles.mediaButton}>📷</button>
-			</div>
 			<div className={styles.inputContainer}>
 				<textarea
 					className={styles.input}
@@ -51,7 +42,7 @@ export default function MessageInput() {
 					onClick={() => window.BloopAPI.openMicrophoneWindow()}
 					title="Talk to Atlas"
 				>
-					Talk to Atlas
+					🎤
 				</button>
 			</div>
 		</div>
