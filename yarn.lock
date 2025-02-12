@@ -4914,6 +4914,49 @@ __metadata:
   languageName: node
   linkType: hard
 
+"Atlas@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "Atlas@workspace:."
+  dependencies:
+    "@chromatic-com/storybook": "npm:1"
+    "@storybook/addon-essentials": "npm:^8.1.1"
+    "@storybook/addon-interactions": "npm:^8.1.1"
+    "@storybook/addon-links": "npm:^8.1.1"
+    "@storybook/addon-mdx-gfm": "npm:^8.1.1"
+    "@storybook/addon-onboarding": "npm:^8.1.1"
+    "@storybook/blocks": "npm:^8.1.1"
+    "@storybook/nextjs": "npm:^8.1.1"
+    "@storybook/react": "npm:^8.1.1"
+    "@storybook/test": "npm:8.1.1"
+    "@svgr/webpack": "npm:^8.1.0"
+    "@types/node": "npm:^20.12.12"
+    "@types/react": "npm:^18.3.2"
+    "@types/react-dom": "npm:^18.3.0"
+    "@typescript-eslint/eslint-plugin": "npm:^7.9.0"
+    "@typescript-eslint/parser": "npm:^7.9.0"
+    concurrently: "npm:^8.2.2"
+    electron: "npm:^30.0.5"
+    electron-builder: "npm:^24.13.3"
+    electron-devtools-installer: "npm:^3.2.0"
+    electron-is-dev: "npm:^3.0.1"
+    electron-log: "npm:^5.1.4"
+    electron-store: "npm:^9.0.0"
+    electron-updater: "npm:6.1.8"
+    eslint: "npm:^8.57.0"
+    eslint-config-next: "npm:^14.2.3"
+    eslint-plugin-storybook: "npm:^0.6.15"
+    next: "npm:^14.2.3"
+    prettier: "npm:^3.2.5"
+    react: "npm:^18.3.1"
+    react-dom: "npm:^18.3.1"
+    storybook: "npm:^8.1.1"
+    tsc-alias: "npm:^1.8.8"
+    tsconfig-paths-webpack-plugin: "npm:^4.1.0"
+    typescript: "npm:^5.4.5"
+    wait-on: "npm:^7.2.0"
+  languageName: unknown
+  linkType: soft
+
 "abbrev@npm:^1.0.0":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -11675,49 +11718,6 @@ __metadata:
   checksum: 10c0/2c409154720846d07a7a995cc3bfba24b9ee73c87360ce3266528c8a217f5f1ab6f916cffbe1be83509b4e8d7b1d713921bb5c69338b4ecaa57df3212f79a8c5
   languageName: node
   linkType: hard
-
-"nextjs-electron-boilerplate@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "nextjs-electron-boilerplate@workspace:."
-  dependencies:
-    "@chromatic-com/storybook": "npm:1"
-    "@storybook/addon-essentials": "npm:^8.1.1"
-    "@storybook/addon-interactions": "npm:^8.1.1"
-    "@storybook/addon-links": "npm:^8.1.1"
-    "@storybook/addon-mdx-gfm": "npm:^8.1.1"
-    "@storybook/addon-onboarding": "npm:^8.1.1"
-    "@storybook/blocks": "npm:^8.1.1"
-    "@storybook/nextjs": "npm:^8.1.1"
-    "@storybook/react": "npm:^8.1.1"
-    "@storybook/test": "npm:8.1.1"
-    "@svgr/webpack": "npm:^8.1.0"
-    "@types/node": "npm:^20.12.12"
-    "@types/react": "npm:^18.3.2"
-    "@types/react-dom": "npm:^18.3.0"
-    "@typescript-eslint/eslint-plugin": "npm:^7.9.0"
-    "@typescript-eslint/parser": "npm:^7.9.0"
-    concurrently: "npm:^8.2.2"
-    electron: "npm:^30.0.5"
-    electron-builder: "npm:^24.13.3"
-    electron-devtools-installer: "npm:^3.2.0"
-    electron-is-dev: "npm:^3.0.1"
-    electron-log: "npm:^5.1.4"
-    electron-store: "npm:^9.0.0"
-    electron-updater: "npm:6.1.8"
-    eslint: "npm:^8.57.0"
-    eslint-config-next: "npm:^14.2.3"
-    eslint-plugin-storybook: "npm:^0.6.15"
-    next: "npm:^14.2.3"
-    prettier: "npm:^3.2.5"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
-    storybook: "npm:^8.1.1"
-    tsc-alias: "npm:^1.8.8"
-    tsconfig-paths-webpack-plugin: "npm:^4.1.0"
-    typescript: "npm:^5.4.5"
-    wait-on: "npm:^7.2.0"
-  languageName: unknown
-  linkType: soft
 
 "no-case@npm:^3.0.4":
   version: 3.0.4

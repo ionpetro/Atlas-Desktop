@@ -1,5 +1,7 @@
 import styles from './Sidebar.module.css'
 import { useState } from 'react'
+import Image from 'next/image'
+import logo from '@/assets/logo.png'
 
 export default function Sidebar() {
 	const [activeTab, setActiveTab] = useState('chat')
@@ -7,7 +9,8 @@ export default function Sidebar() {
 	return (
 		<div className={styles.sidebar}>
 			<div className={styles.header}>
-				<h2>Atlas</h2>
+				<Image src={logo.src} alt="Atlas" width={32} height={32} />{' '}
+				<h2>Atlas OS</h2>
 			</div>
 
 			<nav className={styles.nav}>

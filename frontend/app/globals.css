@@ -1,16 +1,17 @@
 :root {
-	--background: #282a36;
+	--background: #000000;
 	--foreground: #f8f8f2;
-	--comment: #6272a4;
+	--comment: #1a1a1a;
+	--message-background: #1a1a1a;
 	--cyan: #8be9fd;
-	--green: #50fa7b;
+	--accent: #F3CE49;
 	--orange: #ffb86c;
 	--pink: #ff79c6;
-	--purple: #bd93f9;
+	--purple: #F3CE49;
 	--red: #ff5555;
 	--yellow: #f1fa8c;
-	--font-code: Hack, Consolas, 'Courier New', Courier, monospace;
-	--font-normal: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+	--font-normal: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+	--font-code: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 	--round-border-radius: 8px;
 	--font-size: 13px;
 }

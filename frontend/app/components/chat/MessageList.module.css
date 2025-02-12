@@ -12,16 +12,16 @@
   padding: 0.75rem 1rem;
   border-radius: var(--round-border-radius);
   position: relative;
+  background-color: var(--message-background);
+  border: 1px solid #333333;
 }
 
 .userMessage {
   align-self: flex-end;
-  background-color: var(--purple);
 }
 
 .aiMessage {
   align-self: flex-start;
-  background-color: var(--comment);
 }
 
 .messageContent {
