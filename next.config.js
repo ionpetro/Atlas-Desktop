@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	output: 'export',
-	trailingSlash: false,
+	trailingSlash: process.env.NODE_ENV === 'production' ? false : undefined,
 	distDir: 'build',
 	assetPrefix: process.env.NODE_ENV === 'production' ? '.' : undefined,
 	images: {

@@ -7,4 +7,8 @@ contextBridge.exposeInMainWorld('BloopAPI', {
 	foo: 'bar',
 	ping: () => ipcRenderer.invoke('sample:ping'),
 	openMicrophoneWindow: () => ipcRenderer.invoke('window:microphone'),
+	requestMicrophonePermission: () =>
+		ipcRenderer.invoke('permission:microphone'),
+	checkMicrophonePermission: () =>
+		ipcRenderer.invoke('permission:check-microphone'),
 })

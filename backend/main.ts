@@ -100,8 +100,29 @@ const createMicrophoneWindow = async () => {
 		resizable: false,
 		webPreferences: {
 			preload: PRELOAD_PATH,
+			nodeIntegration: false,
+			contextIsolation: true,
+			webSecurity: true,
 		},
 	})
+
+	micWindow.webContents.session.setPermissionRequestHandler(
+		(webContents, permission, callback) => {
+			const allowedPermissions = ['media', 'microphone']
+			if (allowedPermissions.includes(permission)) {
+				callback(true)
+			} else {
+				callback(false)
+			}
+		}
+	)
+
+	micWindow.webContents.session.setPermissionCheckHandler(
+		(webContents, permission) => {
+			const allowedPermissions = ['media', 'microphone']
+			return allowedPermissions.includes(permission)
+		}
+	)
 
 	micWindow.loadURL(
 		electronIsDev
@@ -136,4 +157,18 @@ ipcMain.handle('sample:ping', () => {
 
 ipcMain.handle('window:microphone', () => {
 	createMicrophoneWindow()
+})
+
+ipcMain.handle('permission:check-microphone', async event => {
+	return true // Permissions are handled by setPermissionRequestHandler
+})
+
+ipcMain.handle('permission:microphone', async event => {
+	try {
+		// Request is automatically handled by setPermissionRequestHandler
+		return true
+	} catch (error) {
+		console.error('Error requesting microphone permission:', error)
+		return false
+	}
 })

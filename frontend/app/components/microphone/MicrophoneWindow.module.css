@@ -66,3 +66,15 @@
       transform: scale(1);
     }
   }
+
+  .permissionError {
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--red);
+    text-align: center;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 300px;
+  }
