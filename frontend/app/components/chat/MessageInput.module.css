@@ -1,0 +1,58 @@
+.inputWrapper {
+  border-top: 1px solid var(--comment);
+  padding: 1rem;
+}
+
+.mediaButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mediaButton {
+  background: none;
+  border: 1px solid var(--comment);
+  color: var(--foreground);
+  padding: 0.5rem;
+  border-radius: var(--round-border-radius);
+  cursor: pointer;
+}
+
+.mediaButton:hover {
+  background-color: var(--comment);
+}
+
+.inputContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--comment);
+  border-radius: var(--round-border-radius);
+  padding: 0.75rem;
+  color: var(--foreground);
+  resize: none;
+  font-family: var(--font-normal);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--purple);
+}
+
+.sendButton {
+  background-color: var(--purple);
+  border: none;
+  color: var(--foreground);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--round-border-radius);
+  cursor: pointer;
+}
+
+.sendButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 

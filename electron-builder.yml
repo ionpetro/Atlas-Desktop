@@ -3,7 +3,7 @@ win:
   target: nsis
 linux:
   target: AppImage
-  synopsis: Electron + NextJS Boilerplate
+  synopsis: Atlas Desktop
   category: Chat
 mac:
   target: dmg
