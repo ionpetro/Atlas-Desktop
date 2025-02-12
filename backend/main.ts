@@ -93,8 +93,8 @@ const createMicrophoneWindow = async () => {
 	const PRELOAD_PATH = path.join(__dirname, 'preload.js')
 
 	const micWindow = new BrowserWindow({
-		width: 300,
-		height: 400,
+		width: 1300,
+		height: 1400,
 		icon: getAssetPath('icon.png'),
 		show: false,
 		resizable: false,
@@ -126,7 +126,7 @@ const createMicrophoneWindow = async () => {
 
 	micWindow.loadURL(
 		electronIsDev
-			? 'http://localhost:3000/microphone'
+			? 'http://localhost:3000/multimodal'
 			: `file://${path.join(__dirname, '../../frontend/build/microphone.html')}`
 	)
 

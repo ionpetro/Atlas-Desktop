@@ -17,83 +17,13 @@ export default function MicrophoneWindow() {
 		checkPermission()
 	}, [])
 
-	const requestPermission = async () => {
-		const permitted = await window.BloopAPI.requestMicrophonePermission()
-		setHasPermission(permitted)
-		if (permitted) {
-			try {
-				const audioStream = await navigator.mediaDevices.getUserMedia({
-					audio: true,
-					video: false,
-				})
-				setStream(audioStream)
-			} catch (err) {
-				console.error('Error accessing microphone:', err)
-				setHasPermission(false)
-			}
-		}
-	}
+	const requestPermission = async () => {}
 
-	const handleStartRecording = async () => {
-		if (!hasPermission) {
-			await requestPermission()
-			return
-		}
+	const handleStartRecording = async () => {}
 
-		try {
-			const audioStream = await navigator.mediaDevices.getUserMedia({
-				audio: true,
-				video: false,
-			})
-			setStream(audioStream)
+	const handleStopRecording = () => {}
 
-			audioChunks.current = []
-			mediaRecorder.current = new MediaRecorder(audioStream, {
-				mimeType: 'audio/webm',
-			})
-
-			mediaRecorder.current.ondataavailable = async event => {
-				if (event.data.size > 0) {
-					// Instead of collecting chunks, send them immediately
-					try {
-						await window.BloopAPI.streamAudioToGemini(event.data)
-					} catch (err) {
-						console.error('Error streaming audio:', err)
-					}
-				}
-			}
-
-			mediaRecorder.current.start(250)
-			setIsRecording(true)
-		} catch (err) {
-			console.error('Error accessing microphone:', err)
-			return
-		}
-	}
-
-	const handleStopRecording = () => {
-		if (mediaRecorder.current && mediaRecorder.current.state === 'recording') {
-			mediaRecorder.current.stop()
-			mediaRecorder.current.onstop = () => {
-				const audioBlob = new Blob(audioChunks.current, { type: 'audio/webm' })
-				// TODO: Send audioBlob to Gemini
-				console.log('Recording stopped, blob size:', audioBlob.size)
-			}
-		}
-		setIsRecording(false)
-	}
-
-	const handleCancel = () => {
-		if (mediaRecorder.current && mediaRecorder.current.state === 'recording') {
-			mediaRecorder.current.stop()
-		}
-		if (stream) {
-			stream.getTracks().forEach(track => track.stop())
-			setStream(null)
-		}
-		setIsRecording(false)
-		window.close()
-	}
+	const handleCancel = () => {}
 
 	return (
 		<div className={styles.container}>
