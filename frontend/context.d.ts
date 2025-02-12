@@ -5,6 +5,7 @@
 export interface IBloopAPI {
 	foo: string
 	ping: () => Promise<string>
+	openMicrophoneWindow: () => Promise<void>
 }
 
 declare global {

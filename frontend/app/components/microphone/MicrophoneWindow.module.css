@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: var(--background);
+    padding: 2rem;
+  }
+  
+  .microphoneWrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .microphoneButton {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--purple);
+    color: var(--background);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .microphoneButton.recording {
+    background-color: var(--red);
+    animation: pulse 1.5s infinite;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .cancelButton, .sendButton {
+    padding: 0.5rem 1rem;
+    border-radius: var(--round-border-radius);
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cancelButton {
+    background-color: var(--comment);
+    color: var(--foreground);
+  }
+  
+  .sendButton {
+    background-color: var(--purple);
+    color: var(--foreground);
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

@@ -22,7 +22,12 @@ export default function MessageInput() {
 	return (
 		<div className={styles.inputWrapper}>
 			<div className={styles.mediaButtons}>
-				<button className={styles.mediaButton}>🎤</button>
+				<button
+					className={styles.mediaButton}
+					onClick={() => window.BloopAPI.openMicrophoneWindow()}
+				>
+					🎤
+				</button>
 				<button className={styles.mediaButton}>📷</button>
 			</div>
 			<div className={styles.inputContainer}>
@@ -40,6 +45,13 @@ export default function MessageInput() {
 					disabled={!message.trim()}
 				>
 					Send
+				</button>
+				<button
+					className={styles.sendButton}
+					onClick={() => window.BloopAPI.openMicrophoneWindow()}
+					title="Talk to Atlas"
+				>
+					Talk to Atlas
 				</button>
 			</div>
 		</div>

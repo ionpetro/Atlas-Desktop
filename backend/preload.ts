@@ -6,4 +6,5 @@ const { contextBridge, ipcRenderer } = require('electron')
 contextBridge.exposeInMainWorld('BloopAPI', {
 	foo: 'bar',
 	ping: () => ipcRenderer.invoke('sample:ping'),
+	openMicrophoneWindow: () => ipcRenderer.invoke('window:microphone'),
 })

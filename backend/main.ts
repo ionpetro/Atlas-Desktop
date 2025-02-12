@@ -79,6 +79,40 @@ const spawnAppWindow = async () => {
 	})
 }
 
+const createMicrophoneWindow = async () => {
+	if (electronIsDev) await installExtensions()
+
+	const RESOURCES_PATH = electronIsDev
+		? path.join(__dirname, '../../assets')
+		: path.join(process.resourcesPath, 'assets')
+
+	const getAssetPath = (...paths: string[]): string => {
+		return path.join(RESOURCES_PATH, ...paths)
+	}
+
+	const PRELOAD_PATH = path.join(__dirname, 'preload.js')
+
+	const micWindow = new BrowserWindow({
+		width: 300,
+		height: 400,
+		icon: getAssetPath('icon.png'),
+		show: false,
+		resizable: false,
+		webPreferences: {
+			preload: PRELOAD_PATH,
+		},
+	})
+
+	micWindow.loadURL(
+		electronIsDev
+			? 'http://localhost:3000/microphone'
+			: `file://${path.join(__dirname, '../../frontend/build/microphone.html')}`
+	)
+
+	micWindow.setMenu(null)
+	micWindow.show()
+}
+
 app.on('ready', () => {
 	new AppUpdater()
 	spawnAppWindow()
@@ -98,4 +132,8 @@ app.on('window-all-closed', () => {
 
 ipcMain.handle('sample:ping', () => {
 	return 'pong'
+})
+
+ipcMain.handle('window:microphone', () => {
+	createMicrophoneWindow()
 })
