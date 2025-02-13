@@ -20,24 +20,28 @@
 
 .nav {
   display: flex;
+  flex-direction: column;
   padding: 0.5rem;
   gap: 0.5rem;
   border-bottom: 1px solid var(--comment);
 }
 
 .tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   background: none;
   border: 1px solid var(--comment);
   color: var(--foreground);
   padding: 0.5rem 1rem;
   border-radius: var(--round-border-radius);
   cursor: pointer;
-  flex: 1;
+  width: 100%;
 }
 
 .tab.active {
-  background-color: var(--purple);
-  border-color: var(--purple);
+  background-color: var(--comment);
+  border-color: var(--comment);
 }
 
 .content {

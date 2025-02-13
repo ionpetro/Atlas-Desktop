@@ -2,9 +2,10 @@ import styles from './Sidebar.module.css'
 import { useState } from 'react'
 import Image from 'next/image'
 import logo from '@/assets/logo.png'
+import { Home, MessageSquare } from 'lucide-react'
 
 export default function Sidebar() {
-	const [activeTab, setActiveTab] = useState('chat')
+	const [activeTab, setActiveTab] = useState('home')
 
 	return (
 		<div className={styles.sidebar}>
@@ -15,31 +16,26 @@ export default function Sidebar() {
 
 			<nav className={styles.nav}>
 				<button
+					className={`${styles.tab} ${activeTab === 'home' ? styles.active : ''}`}
+					onClick={() => setActiveTab('home')}
+				>
+					<Home size={16} />
+					<span>Home</span>
+				</button>
+				<button
 					className={`${styles.tab} ${activeTab === 'chat' ? styles.active : ''}`}
 					onClick={() => setActiveTab('chat')}
 				>
-					Chat
-				</button>
-				<button
-					className={`${styles.tab} ${activeTab === 'settings' ? styles.active : ''}`}
-					onClick={() => setActiveTab('settings')}
-				>
-					Settings
+					<MessageSquare size={16} />
+					<span>Chat</span>
 				</button>
 			</nav>
 
 			<div className={styles.content}>
-				{activeTab === 'chat' && (
-					<div className={styles.conversations}>
-						<div className={styles.newChat}>New Chat</div>
-						{/* Conversation list will go here */}
-					</div>
+				{activeTab === 'home' && (
+					<div className={styles.home}>{/* Home content will go here */}</div>
 				)}
-				{activeTab === 'settings' && (
-					<div className={styles.settings}>
-						{/* Settings content will go here */}
-					</div>
-				)}
+				{activeTab === 'chat' && <div />}
 			</div>
 		</div>
 	)

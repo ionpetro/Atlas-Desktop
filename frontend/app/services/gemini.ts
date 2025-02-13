@@ -10,7 +10,7 @@ export class GeminiService {
 	}
 
 	private initChat() {
-		const model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+		const model = this.genAI.getGenerativeModel({ model: 'gemini-1.0-pro' })
 		this.chat = model.startChat({
 			history: [
 				{
