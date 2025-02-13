@@ -1,12 +1,15 @@
 .chatWindow {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 .header {
   padding: 1rem;
   border-bottom: 1px solid var(--comment);
+  flex-shrink: 0;
 }
 
 .status {
