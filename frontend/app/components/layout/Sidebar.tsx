@@ -20,14 +20,14 @@ export default function Sidebar() {
 					onClick={() => setActiveTab('home')}
 				>
 					<Home size={16} />
-					<span>Home</span>
+					<span className={styles.tabText}>Home</span>
 				</button>
 				<button
 					className={`${styles.tab} ${activeTab === 'chat' ? styles.active : ''}`}
 					onClick={() => setActiveTab('chat')}
 				>
 					<MessageSquare size={16} />
-					<span>Chat</span>
+					<span className={styles.tabText}>Chat</span>
 				</button>
 			</nav>
 

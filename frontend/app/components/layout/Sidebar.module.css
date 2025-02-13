@@ -6,7 +6,7 @@
 }
 
 .header {
-  padding: 1rem;
+  padding: .6rem;
   border-bottom: 1px solid var(--comment);
   display: flex;
   align-items: center;
@@ -33,7 +33,8 @@
   background: none;
   border: 1px solid var(--comment);
   color: var(--foreground);
-  padding: 0.5rem 1rem;
+  padding: 1rem;
+  font-size: .9rem;
   border-radius: var(--round-border-radius);
   cursor: pointer;
   width: 100%;
@@ -42,6 +43,10 @@
 .tab.active {
   background-color: var(--comment);
   border-color: var(--comment);
+}
+
+.tabText {
+  margin-left: .2rem;
 }
 
 .content {
