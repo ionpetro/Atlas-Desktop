@@ -34,6 +34,7 @@
 		"electron-store": "^9.0.0",
 		"electron-updater": "6.1.8",
 		"eventemitter3": "^5.0.1",
+		"lucide-react": "^0.475.0",
 		"next": "^14.2.3",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",

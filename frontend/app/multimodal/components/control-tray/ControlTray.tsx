@@ -6,18 +6,30 @@ import { UseMediaStreamResult } from '../hooks/use-media-stream-mux'
 import { useScreenCapture } from '../hooks/use-screen-capture'
 import { useWebcam } from '../hooks/use-webcam'
 import { AudioRecorder } from '../../lib/audio-recorder'
-
+import {
+	PlayIcon,
+	PauseIcon,
+	MicIcon,
+	MicOffIcon,
+	ScreenShareIcon,
+	ScreenShareOffIcon,
+	CameraOffIcon,
+	CameraIcon,
+	XIcon,
+} from 'lucide-react'
+import styles from './ControlTray.module.css'
 export type ControlTrayProps = {
 	videoRef: RefObject<HTMLVideoElement>
 	children?: ReactNode
 	supportsVideo: boolean
 	onVideoStreamChange?: (stream: MediaStream | null) => void
+	handleCancel: () => void
 }
 
 type MediaStreamButtonProps = {
 	isStreaming: boolean
-	onIcon: string
-	offIcon: string
+	onIcon: ReactNode
+	offIcon: ReactNode
 	start: () => Promise<any>
 	stop: () => any
 }
@@ -28,24 +40,24 @@ type MediaStreamButtonProps = {
 const MediaStreamButton = memo(
 	({ isStreaming, onIcon, offIcon, start, stop }: MediaStreamButtonProps) =>
 		isStreaming ? (
-			<button
-				className="action-button mr-2 bg-red-500 hover:bg-red-500"
-				onClick={stop}
-			>
-				<span className="material-symbols-outlined">{onIcon}</span>
+			<button className={styles.actionButton} onClick={stop}>
+				<span className={styles.materialSymbolsOutlined}>{onIcon}</span>
 			</button>
 		) : (
-			<button className="action-button mr-2" onClick={start}>
-				<span className="material-symbols-outlined">{offIcon}</span>
+			<button className={styles.actionButton} onClick={start}>
+				<span className={styles.materialSymbolsOutlined}>{offIcon}</span>
 			</button>
 		)
 )
+
+MediaStreamButton.displayName = 'MediaStreamButton'
 
 function ControlTray({
 	videoRef,
 	children,
 	onVideoStreamChange = () => {},
 	supportsVideo,
+	handleCancel,
 }: ControlTrayProps) {
 	const videoStreams = [useWebcam(), useScreenCapture()]
 	const [activeVideoStream, setActiveVideoStream] =
@@ -141,52 +153,57 @@ function ControlTray({
 	}
 
 	return (
-		<section className="control-tray">
+		<section className={styles.controlTray}>
 			<canvas style={{ display: 'none' }} ref={renderCanvasRef} />
-			<nav className={`actions-nav ${!connected ? 'disabled' : ''}`}>
-				<div className="flex flex-row justify-center items-center">
-					<button
-						className={`action-button connect-toggle mr-2 ${
-							connected ? 'connected bg-red-500 hover:bg-red-500' : ''
-						}`}
-						onClick={connected ? disconnect : connect}
-					>
-						<span className="material-symbols-outlined filled">
-							{connected ? 'Stop' : 'Start'}
+			<nav className={`${styles.actionsNav}`}>
+				<button
+					className={`${styles.actionButton} ${
+						connected ? styles.recording : ''
+					}`}
+					onClick={connected ? disconnect : connect}
+				>
+					<span className={styles.materialSymbolsOutlined}>
+						{connected ? <PauseIcon /> : <PlayIcon />}
+					</span>
+				</button>
+				<button
+					className={`${styles.actionButton} ${muted ? styles.recording : ''}`}
+					onClick={() => setMuted(!muted)}
+				>
+					{!muted ? (
+						<span className={styles.materialSymbolsOutlined}>
+							<MicIcon />
 						</span>
-					</button>
-					<button
-						className={`action-button mic-button mr-2 ${
-							muted ? 'bg-red-500 hover:bg-red-500' : ''
-						}`}
-						onClick={() => setMuted(!muted)}
-					>
-						{!muted ? (
-							<span className="material-symbols-outlined filled">Mute</span>
-						) : (
-							<span className="material-symbols-outlined filled">Unmute</span>
-						)}
-					</button>
-					{supportsVideo && (
-						<>
-							<MediaStreamButton
-								isStreaming={screenCapture.isStreaming}
-								start={changeStreams(screenCapture)}
-								stop={changeStreams()}
-								onIcon="Stop Share Screen"
-								offIcon="Share Screen"
-							/>
-							<MediaStreamButton
-								isStreaming={webcam.isStreaming}
-								start={changeStreams(webcam)}
-								stop={changeStreams()}
-								onIcon="Webcam Off"
-								offIcon="Webcam On"
-							/>
-						</>
+					) : (
+						<span className={styles.materialSymbolsOutlined}>
+							<MicOffIcon />
+						</span>
 					)}
-					{children}
-				</div>
+				</button>
+				{supportsVideo && (
+					<>
+						<MediaStreamButton
+							isStreaming={screenCapture.isStreaming}
+							start={changeStreams(screenCapture)}
+							stop={changeStreams()}
+							onIcon={<ScreenShareIcon />}
+							offIcon={<ScreenShareOffIcon />}
+						/>
+						<MediaStreamButton
+							isStreaming={webcam.isStreaming}
+							start={changeStreams(webcam)}
+							stop={changeStreams()}
+							onIcon={<CameraOffIcon />}
+							offIcon={<CameraIcon />}
+						/>
+					</>
+				)}
+				{children}
+			</nav>
+			<nav className={styles.actionsNav}>
+				<button className={styles.actionButton} onClick={handleCancel}>
+					<XIcon />
+				</button>
 			</nav>
 		</section>
 	)

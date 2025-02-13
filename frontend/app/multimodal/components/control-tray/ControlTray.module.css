@@ -1,0 +1,68 @@
+.controlTray {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.cancelButton {
+  padding: 0.5rem 1rem;
+  border-radius: var(--round-border-radius);
+  border: none;
+}
+
+.actionsNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--comment);
+  border-radius: var(--round-border-radius);
+  margin-top: 1rem;
+}
+
+.actionsNav.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--purple);
+  color: var(--background);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.actionButton:hover {
+  transform: scale(1.05);
+  background-color: var(--accent);
+}
+
+.actionButton.recording {
+  background-color: var(--red);
+  animation: pulse 1.5s infinite;
+}
+
+.actionButton span {
+  font-size: 20px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

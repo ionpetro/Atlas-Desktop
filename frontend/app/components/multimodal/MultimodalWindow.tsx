@@ -29,7 +29,11 @@ export default function MultimodalWindow() {
 			</div>
 
 			<div className={styles.controlsWrapper}>
-				<ControlTray videoRef={videoRef} supportsVideo={true} />
+				<ControlTray
+					videoRef={videoRef}
+					supportsVideo={true}
+					handleCancel={handleCancel}
+				/>
 
 				{hasPermission === false && (
 					<div className={styles.permissionError}>
@@ -37,12 +41,6 @@ export default function MultimodalWindow() {
 						feature.
 					</div>
 				)}
-
-				<div className={styles.actions}>
-					<button className={styles.cancelButton} onClick={handleCancel}>
-						Cancel
-					</button>
-				</div>
 			</div>
 		</div>
 	)

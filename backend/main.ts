@@ -94,8 +94,8 @@ const createMicrophoneWindow = async () => {
 	const PRELOAD_PATH = path.join(__dirname, 'preload.js')
 
 	const micWindow = new BrowserWindow({
-		width: 1300,
-		height: 1400,
+		width: 450,
+		height: 500,
 		icon: getAssetPath('icon.png'),
 		show: false,
 		resizable: false,
@@ -129,8 +129,12 @@ const createMicrophoneWindow = async () => {
 		desktopCapturer
 			.getSources({ types: ['screen', 'window'] })
 			.then(sources => {
-				console.log('sources', sources)
-				callback({ video: sources[0], audio: 'loopback' })
+				const source = sources.find(source => source.name === 'Entire screen')
+				if (source) {
+					callback({ video: source, audio: 'loopback' })
+				} else {
+					callback({ video: sources[0], audio: 'loopback' })
+				}
 			})
 	})
 
