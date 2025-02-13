@@ -1,14 +1,16 @@
+import { useChat } from '@/context/ChatContext'
 import styles from './MessageInput.module.css'
 import { useState, KeyboardEvent } from 'react'
 
 export default function MessageInput() {
 	const [message, setMessage] = useState('')
+	const { sendMessage, isLoading } = useChat()
 
-	const handleSubmit = () => {
-		if (message.trim()) {
-			// TODO: Handle message sending
-			console.log('Sending message:', message)
+	const handleSubmit = async () => {
+		if (message.trim() && !isLoading) {
+			const currentMessage = message
 			setMessage('')
+			await sendMessage(currentMessage)
 		}
 	}
 
@@ -29,11 +31,12 @@ export default function MessageInput() {
 					onKeyDown={handleKeyPress}
 					placeholder="Type a message..."
 					rows={1}
+					disabled={isLoading}
 				/>
 				<button
 					className={styles.sendButton}
 					onClick={handleSubmit}
-					disabled={!message.trim()}
+					disabled={!message.trim() || isLoading}
 				>
 					Send
 				</button>

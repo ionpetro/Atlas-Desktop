@@ -1,39 +1,18 @@
+import { useChat } from '@/context/ChatContext'
 import styles from './MessageList.module.css'
 import { useRef, useEffect } from 'react'
 
-interface Message {
-	id: string
-	content: string
-	sender: 'user' | 'ai'
-	timestamp: Date
-}
-
-// Temporary mock data
-const mockMessages: Message[] = [
-	{
-		id: '1',
-		content: 'Hello! How can I help you today?',
-		sender: 'ai',
-		timestamp: new Date(),
-	},
-	{
-		id: '2',
-		content: 'I need help with a coding problem.',
-		sender: 'user',
-		timestamp: new Date(),
-	},
-]
-
 export default function MessageList() {
 	const bottomRef = useRef<HTMLDivElement>(null)
+	const { messages, isLoading } = useChat()
 
 	useEffect(() => {
 		bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-	}, [mockMessages])
+	}, [messages])
 
 	return (
 		<div className={styles.messageList}>
-			{mockMessages.map(message => (
+			{messages.map(message => (
 				<div
 					key={message.id}
 					className={`${styles.message} ${
@@ -49,6 +28,17 @@ export default function MessageList() {
 					</div>
 				</div>
 			))}
+			{isLoading && (
+				<div className={`${styles.message} ${styles.aiMessage}`}>
+					<div className={styles.messageContent}>
+						<div className={styles.typingIndicator}>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+				</div>
+			)}
 			<div ref={bottomRef} />
 		</div>
 	)
