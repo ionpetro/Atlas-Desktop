@@ -1,11 +1,12 @@
 import styles from './Sidebar.module.css'
-import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import logo from '@/assets/logo.png'
 import { Home, MessageSquare } from 'lucide-react'
 
 export default function Sidebar() {
-	const [activeTab, setActiveTab] = useState('home')
+	const pathname = usePathname()
 
 	return (
 		<div className={styles.sidebar}>
@@ -15,27 +16,27 @@ export default function Sidebar() {
 			</div>
 
 			<nav className={styles.nav}>
-				<button
-					className={`${styles.tab} ${activeTab === 'home' ? styles.active : ''}`}
-					onClick={() => setActiveTab('home')}
+				<Link
+					href="/"
+					className={`${styles.tab} ${pathname === '/' ? styles.active : ''}`}
 				>
 					<Home size={16} />
 					<span className={styles.tabText}>Home</span>
-				</button>
-				<button
-					className={`${styles.tab} ${activeTab === 'chat' ? styles.active : ''}`}
-					onClick={() => setActiveTab('chat')}
+				</Link>
+				<Link
+					href="/chat"
+					className={`${styles.tab} ${pathname === '/chat' ? styles.active : ''}`}
 				>
 					<MessageSquare size={16} />
 					<span className={styles.tabText}>Chat</span>
-				</button>
+				</Link>
 			</nav>
 
 			<div className={styles.content}>
-				{activeTab === 'home' && (
+				{pathname === '/' && (
 					<div className={styles.home}>{/* Home content will go here */}</div>
 				)}
-				{activeTab === 'chat' && <div />}
+				{pathname === '/chat' && <div />}
 			</div>
 		</div>
 	)

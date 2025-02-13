@@ -33,7 +33,7 @@
   border: 1px solid var(--comment);
   border-radius: var(--round-border-radius);
   padding: 0.75rem;
-  color: var(--foreground);
+  color: white;
   resize: none;
   font-family: var(--font-normal);
 }

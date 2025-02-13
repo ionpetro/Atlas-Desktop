@@ -1,9 +1,7 @@
-import './globals.css'
+'use client'
 
-export const metadata = {
-	title: 'Atlas Desktop',
-	description: 'A desktop application for Atlas',
-}
+import ClientLayout from './components/layout/ClientLayout'
+import './globals.css'
 
 export default function RootLayout({
 	children,
@@ -12,7 +10,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body>
+				<ClientLayout>{children}</ClientLayout>
+			</body>
 		</html>
 	)
 }
