@@ -6,6 +6,7 @@ import electronIsDev from 'electron-is-dev'
 import ElectronStore from 'electron-store'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import { session, desktopCapturer } from 'electron'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -54,8 +55,8 @@ const spawnAppWindow = async () => {
 	const PRELOAD_PATH = path.join(__dirname, 'preload.js')
 
 	appWindow = new BrowserWindow({
-		width: 800,
-		height: 600,
+		width: 700,
+		height: 500,
 		icon: getAssetPath('icon.png'),
 		show: false,
 		webPreferences: {
@@ -124,10 +125,19 @@ const createMicrophoneWindow = async () => {
 		}
 	)
 
+	session.defaultSession.setDisplayMediaRequestHandler((request, callback) => {
+		desktopCapturer
+			.getSources({ types: ['screen', 'window'] })
+			.then(sources => {
+				console.log('sources', sources)
+				callback({ video: sources[0], audio: 'loopback' })
+			})
+	})
+
 	micWindow.loadURL(
 		electronIsDev
 			? 'http://localhost:3000/multimodal'
-			: `file://${path.join(__dirname, '../../frontend/build/microphone.html')}`
+			: `file://${path.join(__dirname, '../../frontend/build/multimodal.html')}`
 	)
 
 	micWindow.setMenu(null)

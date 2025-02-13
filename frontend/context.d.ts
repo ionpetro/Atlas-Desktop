@@ -8,6 +8,15 @@ export interface IBloopAPI {
 	openMicrophoneWindow: () => Promise<void>
 	requestMicrophonePermission: () => Promise<boolean>
 	checkMicrophonePermission: () => Promise<boolean>
+	getScreenSources: () => Promise<
+		{
+			id: string
+			name: string
+			thumbnail: Electron.NativeImage
+			display_id: string
+			appIcon: Electron.NativeImage | null
+		}[]
+	>
 }
 
 declare global {

@@ -146,7 +146,9 @@ function ControlTray({
 			<nav className={`actions-nav ${!connected ? 'disabled' : ''}`}>
 				<div className="flex flex-row justify-center items-center">
 					<button
-						className={`action-button connect-toggle mr-2 ${connected ? 'connected bg-red-500 hover:bg-red-500' : ''}`}
+						className={`action-button connect-toggle mr-2 ${
+							connected ? 'connected bg-red-500 hover:bg-red-500' : ''
+						}`}
 						onClick={connected ? disconnect : connect}
 					>
 						<span className="material-symbols-outlined filled">
@@ -154,7 +156,9 @@ function ControlTray({
 						</span>
 					</button>
 					<button
-						className={`action-button mic-button mr-2 ${muted ? 'bg-red-500 hover:bg-red-500' : ''}`}
+						className={`action-button mic-button mr-2 ${
+							muted ? 'bg-red-500 hover:bg-red-500' : ''
+						}`}
 						onClick={() => setMuted(!muted)}
 					>
 						{!muted ? (
