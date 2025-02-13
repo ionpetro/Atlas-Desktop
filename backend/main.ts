@@ -98,6 +98,7 @@ const createMicrophoneWindow = async () => {
 		height: 500,
 		icon: getAssetPath('icon.png'),
 		show: false,
+		alwaysOnTop: true,
 		resizable: false,
 		webPreferences: {
 			preload: PRELOAD_PATH,
