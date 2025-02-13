@@ -1,3 +1,4 @@
+import { Send } from 'lucide-react'
 import styles from './MicrophoneWindow.module.css'
 import { useState, useEffect, useRef } from 'react'
 
@@ -47,7 +48,7 @@ export default function MicrophoneWindow() {
 				</button>
 				{isRecording && (
 					<button className={styles.sendButton} onClick={handleStopRecording}>
-						Send
+						<Send size={16} />
 					</button>
 				)}
 			</div>

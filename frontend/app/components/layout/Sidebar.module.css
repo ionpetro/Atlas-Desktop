@@ -25,7 +25,6 @@
   flex-direction: column;
   padding: 0.5rem;
   gap: 0.5rem;
-  border-bottom: 1px solid var(--comment);
 }
 
 .tab {
