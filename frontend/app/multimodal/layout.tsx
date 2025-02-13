@@ -1,9 +1,9 @@
 export default function RetailLayout({
-    children,
-    params,
+	children,
+	params,
 }: {
-    children: React.ReactNode;
-    params: unknown;
+	children: React.ReactNode
+	params: unknown
 }) {
-    return <div>{children}</div>;
+	return <div>{children}</div>
 }

@@ -10,4 +10,8 @@
     flex: 1;
     overflow-y: auto;
     background: var(--background);
+}
+
+.fullWidth {
+  width: 100%;
 } 
